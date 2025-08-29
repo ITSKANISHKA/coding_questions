@@ -1,0 +1,36 @@
+/*
+class Node
+{
+    int data;
+    Node next;
+    Node(int d) {
+        data = d;
+        next = null;
+    }
+}
+*/
+
+class Solution {
+    Node sortedMerge(Node head1, Node head2) {
+        // code here
+        Node Dummy=new Node(0);
+        Node temp=Dummy;
+        while(head1!=null && head2!=null){
+            if(head1.data<head2.data){
+                Dummy.next=head1;
+                head1=head1.next;
+                Dummy=Dummy.next;
+            }else{
+                Dummy.next=head2;
+                head2=head2.next;
+                Dummy=Dummy.next;
+            }
+        }
+        if(head1==null){
+            Dummy.next=head2;
+        }if(head2==null){
+            Dummy.next=head1;
+        }return temp.next;
+        
+    }
+}
